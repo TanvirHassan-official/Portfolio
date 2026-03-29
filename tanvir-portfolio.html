@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tanvir Hassan — Frontend Developer based in Dhaka, Bangladesh. Building fast, accessible, and beautiful web interfaces." />
+  <title>Tanvir Hassan — Frontend Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F5F2ED;
+      --surface: #EDEAE4;
+      --surface2: #E4E0D8;
+      --ink: #1A1814;
+      --ink-muted: #6B6560;
+      --ink-faint: #ABA69F;
+      --accent: #C85A2A;
+      --accent-light: #F0D4C4;
+      --white: #FDFCFA;
+      --border: rgba(26,24,20,0.1);
+      --border-strong: rgba(26,24,20,0.2);
+
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── Utility ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 60px); }
+    .mono { font-family: var(--font-mono); }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(245,242,237,0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      background: var(--ink);
+      color: var(--white);
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); transition: 0.3s; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100svh;
+      display: flex; align-items: center;
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block; width: 24px; height: 1px;
+      background: var(--accent);
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-value {
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      color: var(--ink-muted);
+      line-height: 1.65;
+      max-width: 520px;
+      margin-bottom: 40px;
+      font-weight: 300;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      border-radius: 6px;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 12px rgba(200,90,42,0.25);
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 12px;
+}
+
+.hero-photo-wrap {
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.hero-photo-frame {
+  width: 100%;
+  aspect-ratio: 4 / 5; /* keeps nice portrait ratio */
+  overflow: hidden;
+  border-radius: 16px;
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+
+    .btn-primary:hover { background: #B04E22; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(200,90,42,0.3); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px;
+      background: transparent;
+      color: var(--ink);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      border-radius: 6px;
+      border: 1.5px solid var(--border-strong);
+      transition: border-color 0.2s, transform 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--ink); background: var(--surface); transform: translateY(-2px); }
+    .btn-arrow { font-size: 1rem; transition: transform 0.2s; }
+    .btn-primary:hover .btn-arrow, .btn-secondary:hover .btn-arrow { transform: translateX(3px); }
+
+    /* Hero card */
+    .hero-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 8px 40px rgba(26,24,20,0.07);
+    }
+    .code-block {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      line-height: 1.9;
+      color: var(--ink-muted);
+    }
+    .code-block .c-keyword { color: #C85A2A; }
+    .code-block .c-string { color: #2A7A5A; }
+    .code-block .c-prop { color: #2A5AC8; }
+    .code-block .c-comment { color: var(--ink-faint); font-style: italic; }
+    .code-label {
+      display: flex; align-items: center; gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ink-faint);
+      margin-bottom: 20px;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-r { background: #FF5F57; }
+    .dot-y { background: #FEBC2E; }
+    .dot-g { background: #28C840; }
+    .hero-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--border);
+      border-radius: 10px; overflow: hidden;
+      margin-top: 28px;
+    }
+    .stat {
+      background: var(--surface);
+      padding: 16px 18px;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: clamp(64px, 10vw, 120px) 0; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section-label::after {
+      content: '';
+      display: block; width: 32px; height: 1px;
+      background: var(--accent);
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--ink-muted);
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .about-body {
+      font-size: 1.08rem;
+      color: var(--ink-muted);
+      font-weight: 300;
+      line-height: 1.8;
+    }
+    .about-body p + p { margin-top: 16px; }
+    .about-body strong { font-weight: 600; color: var(--ink); }
+    .about-right { display: flex; flex-direction: column; gap: 20px; }
+    .about-badge {
+      display: flex; align-items: center; gap: 14px;
+      padding: 18px 20px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    .badge-icon {
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--accent-light);
+      border-radius: 8px;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .badge-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+    .badge-sub {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ink-faint);
+    }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--bg); }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .skill-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .skill-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(26,24,20,0.08);
+    }
+    .skill-card-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .skill-card-label::before {
+      content: '';
+      display: block; width: 16px; height: 1px;
+      background: var(--accent);
+    }
+    .skill-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 5px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--ink-muted);
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .tag:hover { background: var(--accent-light); color: var(--accent); border-color: var(--accent); }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--white); }
+    .projects-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: 56px;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .project-cards { display: flex; flex-direction: column; gap: 28px; }
+    .project-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: clamp(28px, 4vw, 48px);
+      display: grid;
+      grid-template-columns: 1fr 240px;
+      gap: 40px;
+      align-items: start;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .project-card:hover {
+      border-color: var(--border-strong);
+      box-shadow: 0 8px 32px rgba(26,24,20,0.07);
+      transform: translateY(-2px);
+    }
+    .project-num {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ink-faint);
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+    .project-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .project-summary {
+      font-size: 1rem;
+      color: var(--ink-muted);
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+    .project-detail {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 14px 24px;
+      margin-bottom: 24px;
+    }
+    .detail-item label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 3px;
+    }
+    .detail-item span {
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+      font-weight: 400;
+    }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 6px; }
+    .stack-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 4px 10px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--ink-muted);
+    }
+    .project-actions {
+      display: flex; flex-direction: column; gap: 10px;
+      align-items: flex-start;
+    }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 10px 18px;
+      border-radius: 6px;
+      width: 100%;
+      justify-content: center;
+      transition: 0.2s;
+    }
+    .project-link-demo {
+      background: var(--ink);
+      color: var(--white);
+    }
+    .project-link-demo:hover { background: var(--accent); }
+    .project-link-github {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--border-strong);
+    }
+    .project-link-github:hover { border-color: var(--ink); background: var(--surface); }
+    .project-metric {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      margin-top: 8px;
+    }
+    .project-metric::before { content: '↑'; font-size: 0.85rem; }
+
+    /* ── PROCESS ── */
+    #process { background: var(--bg); }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 32px; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border-strong) 20%, var(--border-strong) 80%, transparent);
+    }
+    .step {
+      text-align: center;
+      position: relative;
+      padding-top: 8px;
+    }
+    .step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--ink-muted);
+      margin: 0 auto 20px;
+      position: relative; z-index: 1;
+      transition: 0.2s;
+    }
+    .step:hover .step-num {
+      background: var(--accent);
+      color: var(--white);
+      border-color: var(--accent);
+    }
+    .step h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .step p {
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--ink); color: var(--white); }
+    #contact .section-label { color: var(--accent); }
+    #contact h2 { color: var(--white); }
+    #contact .section-sub { color: rgba(253,252,250,0.55); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .contact-email {
+      display: inline-flex; align-items: center; gap: 12px;
+      margin: 32px 0;
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--white);
+      border-bottom: 1px solid rgba(253,252,250,0.2);
+      padding-bottom: 16px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .contact-email:hover { color: var(--accent); border-color: var(--accent); }
+    .contact-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px;
+      background: var(--white);
+      color: var(--ink);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      border-radius: 6px;
+      transition: 0.2s;
+    }
+    .btn-white:hover { background: var(--accent); color: var(--white); transform: translateY(-2px); }
+    .btn-outline-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px;
+      border: 1.5px solid rgba(253,252,250,0.3);
+      color: var(--white);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      border-radius: 6px;
+      transition: 0.2s;
+    }
+    .btn-outline-white:hover { border-color: rgba(253,252,250,0.7); transform: translateY(-2px); }
+    .contact-social { margin-top: 36px; }
+    .social-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: rgba(253,252,250,0.35);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .social-links { display: flex; gap: 12px; }
+    .social-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 16px;
+      border: 1px solid rgba(253,252,250,0.15);
+      border-radius: 6px;
+      font-size: 0.82rem;
+      color: rgba(253,252,250,0.65);
+      transition: 0.2s;
+    }
+    .social-link:hover { border-color: rgba(253,252,250,0.4); color: var(--white); }
+
+    /* Contact right side decoration */
+    .contact-deco {
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .contact-deco-item {
+      padding: 20px 24px;
+      border: 1px solid rgba(253,252,250,0.1);
+      border-radius: 10px;
+      transition: border-color 0.2s;
+    }
+    .contact-deco-item:hover { border-color: rgba(253,252,250,0.25); }
+    .deco-emoji { font-size: 1.2rem; margin-bottom: 8px; }
+    .deco-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .deco-sub {
+      font-size: 0.82rem;
+      color: rgba(253,252,250,0.45);
+      font-weight: 300;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 28px 0;
+      background: var(--ink);
+      border-top: 1px solid rgba(253,252,250,0.08);
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: rgba(253,252,250,0.3);
+    }
+    .footer-copy span { color: rgba(253,252,250,0.5); }
+    .footer-right { display: flex; align-items: center; gap: 20px; }
+    .footer-link {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: rgba(253,252,250,0.35);
+      transition: color 0.2s;
+    }
+    .footer-link:hover { color: rgba(253,252,250,0.7); }
+    .back-top {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: rgba(253,252,250,0.35);
+      display: flex; align-items: center; gap: 5px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .back-top:hover { color: var(--accent); }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── MOBILE NAV ── */
+    .mobile-menu {
+      display: none;
+      position: fixed; inset: 0; z-index: 99;
+      background: var(--white);
+      flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 28px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1.5rem;
+      font-family: var(--font-display);
+      color: var(--ink);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--accent); }
+    .mobile-close {
+      position: absolute; top: 20px; right: 24px;
+      font-size: 1.5rem; cursor: pointer; color: var(--ink-muted);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 40px; height: 2px;
+      background: var(--accent);
+      margin: 20px 0 32px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .project-card { grid-template-columns: 1fr; }
+      .project-actions { flex-direction: row; }
+      .project-link { width: auto; }
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .process-steps::before { display: none; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .contact-deco { flex-direction: row; flex-wrap: wrap; }
+      .contact-deco-item { flex: 1; min-width: 160px; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .projects-header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav aria-label="Main navigation">
+  <div class="container nav-inner">
+    <a href="#hero" class="nav-logo">tanvir<span>.</span>hassan</a>
+    <div class="nav-links" role="list">
+      <a href="#about" role="listitem">About</a>
+      <a href="#projects" role="listitem">Work</a>
+      <a href="#process" role="listitem">Process</a>
+    </div>
+    <a href="#contact" class="nav-cta">Hire Me</a>
+    <div class="hamburger" aria-label="Open menu" role="button" tabindex="0" onclick="openMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true">
+  <span class="mobile-close" onclick="closeMenu()" aria-label="Close menu">✕</span>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#projects" onclick="closeMenu()">Work</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#process" onclick="closeMenu()">Process</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+
+
+
+<!-- HERO -->
+<section id="hero" aria-label="Introduction">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow reveal">Available for Work · Dhaka, BD</div>
+        <h1 class="reveal reveal-delay-1">
+          I build interfaces<br>that <em>perform</em><br>beautifully.
+        </h1>
+        <p class="hero-value reveal reveal-delay-2">
+          Frontend developer specializing in React and Next.js — crafting responsive, accessible, and fast web experiences that users actually enjoy.
+        </p>
+        <div class="hero-actions reveal reveal-delay-3">
+          <a href="#projects" class="btn-primary">View Projects <span class="btn-arrow">→</span></a>
+          <a href="#contact" class="btn-secondary">Contact Me <span class="btn-arrow">→</span></a>
+        </div>
+      </div>
+      <div class="hero-photo-wrap reveal reveal-delay-2">
+        <div class="hero-photo-frame">
+          <img src="./assets/hehe.jpeg" alt="Tanvir Hassan — Frontend Developer" class="hero-photo" />
+          
+          <div class="hero-photo-badge">
+            <span class="badge-dot"></span> Available for work
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- DEVELOPER.TS SECTION -->
+<section id="devts" aria-label="Developer profile" class="devts-section">
+  <div class="container">
+    <div class="devts-grid">
+      <div class="devts-left reveal">
+        <div class="section-label">Identity</div>
+        <h2>The developer<br>behind the code.</h2>
+        <p class="section-sub" style="margin-top:16px">A quick snapshot of who I am, what I value, and how I show up every day as a frontend developer.</p>
+      </div>
+      <div class="devts-right reveal reveal-delay-2">
+        <div class="hero-card">
+          <div class="code-label">
+            <span class="dot dot-r"></span>
+            <span class="dot dot-y"></span>
+            <span class="dot dot-g"></span>
+            <span style="margin-left:8px">developer.ts</span>
+          </div>
+          <div class="code-block">
+            <div><span class="c-keyword">const</span> <span class="c-prop">tanvir</span> = {</div>
+            <div>&nbsp;&nbsp;role: <span class="c-string">"Frontend Dev"</span>,</div>
+            <div>&nbsp;&nbsp;focus: [<span class="c-string">"React"</span>, <span class="c-string">"Next.js"</span>],</div>
+            <div>&nbsp;&nbsp;location: <span class="c-string">"Dhaka, BD"</span>,</div>
+            <div>&nbsp;&nbsp;available: <span class="c-keyword">true</span>,</div>
+            <div>&nbsp;&nbsp;values: {</div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;quality: <span class="c-string">"high"</span>,</div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;performance: <span class="c-string">"optimized"</span>,</div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;a11y: <span class="c-string">"always"</span>,</div>
+            <div>&nbsp;&nbsp;}</div>
+            <div>}</div>
+            <br>
+            <div class="c-comment">// Let's build something great.</div>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="stat-num">2+</div>
+              <div class="stat-label">Yrs Experience</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">15+</div>
+              <div class="stat-label">Projects Built</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">98</div>
+              <div class="stat-label">Lighthouse Avg</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">100%</div>
+              <div class="stat-label">Client Satisfaction</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" aria-label="About Tanvir Hassan">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="section-label reveal">About</div>
+        <h2 class="reveal reveal-delay-1">Developer,<br>not just a coder.</h2>
+        <div class="divider reveal reveal-delay-1"></div>
+        <div class="about-body reveal reveal-delay-2">
+          <p>I'm <strong>Tanvir Hassan</strong> — a frontend developer based in Dhaka, building web interfaces where design precision meets technical rigor. I care deeply about the intersection of UI quality and engineering craft.</p>
+          <p>My focus is on <strong>React and Next.js ecosystems</strong> — creating component-driven architectures that are fast to load, straightforward to maintain, and accessible to everyone. I don't just write code that works; I write code that holds up under scale and scrutiny.</p>
+          <p>Whether it's a freelance client needing a polished product page or a team shipping a complex application, I bring the same standard: <strong>clear thinking, clean implementation, and measurable results.</strong></p>
+        </div>
+      </div>
+      <div class="about-right reveal reveal-delay-3">
+        <div class="about-badge">
+          <div class="badge-icon">⚡</div>
+          <div>
+            <div class="badge-title">Performance-first mindset</div>
+            <div class="badge-sub">Core Web Vitals · Lighthouse · Bundle analysis</div>
+          </div>
+        </div>
+        <div class="about-badge">
+          <div class="badge-icon">♿</div>
+          <div>
+            <div class="badge-title">Accessibility by default</div>
+            <div class="badge-sub">WCAG 2.1 · Semantic HTML · Keyboard nav</div>
+          </div>
+        </div>
+        <div class="about-badge">
+          <div class="badge-icon">📱</div>
+          <div>
+            <div class="badge-title">Truly responsive design</div>
+            <div class="badge-sub">Mobile-first · All viewports · Touch-friendly</div>
+          </div>
+        </div>
+        <div class="about-badge">
+          <div class="badge-icon">🎨</div>
+          <div>
+            <div class="badge-title">Design sensibility</div>
+            <div class="badge-sub">Figma · Design systems · Component tokens</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" aria-label="Technical skills">
+  <div class="container">
+    <div class="section-label reveal">Skills</div>
+    <h2 class="reveal reveal-delay-1">Tools I trust.</h2>
+    <p class="section-sub reveal reveal-delay-2">A curated stack — not a laundry list. Every tool here I use with confidence in production.</p>
+    <div class="skills-grid">
+      <div class="skill-card reveal reveal-delay-1">
+        <div class="skill-card-label">Core Stack</div>
+        <h3>Frontend</h3>
+        <div class="skill-tags">
+          <span class="tag">HTML5</span>
+          <span class="tag">CSS3</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">React</span>
+          <span class="tag">Next.js</span>
+          <span class="tag">Tailwind CSS</span>
+        </div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <div class="skill-card-label">Workflow</div>
+        <h3>Tools</h3>
+        <div class="skill-tags">
+          <span class="tag">Git</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">Figma</span>
+          <span class="tag">Vite</span>
+          <span class="tag">Webpack</span>
+          <span class="tag">Vercel</span>
+          <span class="tag">VS Code</span>
+        </div>
+      </div>
+      <div class="skill-card reveal reveal-delay-3">
+        <div class="skill-card-label">Craft</div>
+        <h3>Strengths</h3>
+        <div class="skill-tags">
+          <span class="tag">Responsive Design</span>
+          <span class="tag">Accessibility</span>
+          <span class="tag">Performance</span>
+          <span class="tag">Component UI</span>
+          <span class="tag">SEO</span>
+          <span class="tag">Animation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" aria-label="Featured projects">
+  <div class="container">
+    <div class="projects-header">
+      <div>
+        <div class="section-label reveal">Projects</div>
+        <h2 class="reveal reveal-delay-1">Selected work.</h2>
+      </div>
+      <a href="https://github.com/TanvirHassan-official" target="_blank" rel="noopener noreferrer" class="btn-secondary reveal">
+        All on GitHub <span class="btn-arrow">→</span>
+      </a>
+    </div>
+    <div class="project-cards">
+
+      <!-- Project 1 -->
+      <article class="project-card reveal">
+        <div>
+          <div class="project-num">01 / 03</div>
+          <h3>ShopNest — E-commerce Platform</h3>
+          <p class="project-summary">A fully responsive online store with cart management, product filtering, and a seamless checkout flow.</p>
+          <div class="project-detail">
+            <div class="detail-item">
+              <label>Problem solved</label>
+              <span>Slow, mobile-unfriendly storefront hurting conversions</span>
+            </div>
+            <div class="detail-item">
+              <label>My role</label>
+              <span>Frontend Lead — UI architecture &amp; performance</span>
+            </div>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">React</span>
+            <span class="stack-tag">Next.js</span>
+            <span class="stack-tag">Tailwind CSS</span>
+            <span class="stack-tag">TypeScript</span>
+            <span class="stack-tag">Vercel</span>
+          </div>
+          <div class="project-metric">Lighthouse score improved from 61 → 97</div>
+        </div>
+        <div class="project-actions">
+          <a href="#" class="project-link project-link-demo" aria-label="View ShopNest live demo">Live Demo ↗</a>
+          <a href="https://github.com/TanvirHassan-official" target="_blank" rel="noopener noreferrer" class="project-link project-link-github" aria-label="View ShopNest on GitHub">GitHub →</a>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project-card reveal">
+        <div>
+          <div class="project-num">02 / 03</div>
+          <h3>TaskFlow — Productivity Dashboard</h3>
+          <p class="project-summary">A real-time task management app with drag-and-drop boards, filtering, and deadline tracking for small teams.</p>
+          <div class="project-detail">
+            <div class="detail-item">
+              <label>Problem solved</label>
+              <span>Teams losing track of priorities in scattered tools</span>
+            </div>
+            <div class="detail-item">
+              <label>My role</label>
+              <span>Full UI build — component system &amp; state management</span>
+            </div>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">React</span>
+            <span class="stack-tag">TypeScript</span>
+            <span class="stack-tag">Tailwind CSS</span>
+            <span class="stack-tag">Zustand</span>
+            <span class="stack-tag">Vite</span>
+          </div>
+          <div class="project-metric">Load time reduced by 42% vs. previous build</div>
+        </div>
+        <div class="project-actions">
+          <a href="#" class="project-link project-link-demo" aria-label="View TaskFlow live demo">Live Demo ↗</a>
+          <a href="https://github.com/TanvirHassan-official" target="_blank" rel="noopener noreferrer" class="project-link project-link-github" aria-label="View TaskFlow on GitHub">GitHub →</a>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project-card reveal">
+        <div>
+          <div class="project-num">03 / 03</div>
+          <h3>LandKit — SaaS Landing Page Builder</h3>
+          <p class="project-summary">A component-based page builder allowing non-technical users to compose and publish landing pages without code.</p>
+          <div class="project-detail">
+            <div class="detail-item">
+              <label>Problem solved</label>
+              <span>Marketing teams bottlenecked by dev resources for simple pages</span>
+            </div>
+            <div class="detail-item">
+              <label>My role</label>
+              <span>UI design &amp; React component library from scratch</span>
+            </div>
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">Next.js</span>
+            <span class="stack-tag">Tailwind CSS</span>
+            <span class="stack-tag">Framer Motion</span>
+            <span class="stack-tag">TypeScript</span>
+          </div>
+          <div class="project-metric">50+ reusable components, WCAG 2.1 AA compliant</div>
+        </div>
+        <div class="project-actions">
+          <a href="#" class="project-link project-link-demo" aria-label="View LandKit live demo">Live Demo ↗</a>
+          <a href="https://github.com/TanvirHassan-official" target="_blank" rel="noopener noreferrer" class="project-link project-link-github" aria-label="View LandKit on GitHub">GitHub →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" aria-label="How I work">
+  <div class="container">
+    <div class="section-label reveal">Process</div>
+    <h2 class="reveal reveal-delay-1">How I work.</h2>
+    <p class="section-sub reveal reveal-delay-2">Consistent process. No surprises. Clean handoffs.</p>
+    <div class="process-steps">
+      <div class="step reveal reveal-delay-1">
+        <div class="step-num">01</div>
+        <h3>Understand the problem</h3>
+        <p>I start with goals, not wireframes — clarifying what success looks like before writing a line of code.</p>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-num">02</div>
+        <h3>Design the UI</h3>
+        <p>Wireframe in Figma, establish a component hierarchy, and agree on design tokens before building starts.</p>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <div class="step-num">03</div>
+        <h3>Build in components</h3>
+        <p>Develop mobile-first, reusable React components — clean, typed, and tested across all viewports.</p>
+      </div>
+      <div class="step reveal reveal-delay-4">
+        <div class="step-num">04</div>
+        <h3>Test, optimize, ship</h3>
+        <p>Audit Lighthouse scores, accessibility, and cross-browser compatibility before every deployment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" aria-label="Contact Tanvir Hassan">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label reveal">Contact</div>
+        <h2 class="reveal reveal-delay-1">Let's build something worth shipping.</h2>
+        <p class="section-sub reveal reveal-delay-2">Open to full-time roles and freelance projects. I respond within 24 hours.</p>
+        <a href="mailto:tanvirhassan0006@gmail.com" class="contact-email reveal reveal-delay-2" aria-label="Email Tanvir Hassan">
+          📧 tanvirhassan0006@gmail.com
+        </a>
+        <div class="contact-actions reveal reveal-delay-3">
+          <a href="mailto:tanvirhassan0006@gmail.com" class="btn-white">Send Email →</a>
+          <a href="https://linkedin.com/in/tanvir-hassan-bd/" target="_blank" rel="noopener noreferrer" class="btn-outline-white">LinkedIn ↗</a>
+        </div>
+        <div class="contact-social reveal reveal-delay-4">
+          <div class="social-label">Also find me on</div>
+          <div class="social-links">
+            <a href="https://github.com/TanvirHassan-official" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub profile">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a href="https://linkedin.com/in/tanvir-hassan-bd/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn profile">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="contact-deco reveal reveal-delay-2">
+        <div class="contact-deco-item">
+          <div class="deco-emoji">💼</div>
+          <div class="deco-title">Open to full-time roles</div>
+          <div class="deco-sub">Frontend / UI Engineer positions</div>
+        </div>
+        <div class="contact-deco-item">
+          <div class="deco-emoji">🚀</div>
+          <div class="deco-title">Available for freelance</div>
+          <div class="deco-sub">React apps, landing pages, redesigns</div>
+        </div>
+        <div class="contact-deco-item">
+          <div class="deco-emoji">⏱</div>
+          <div class="deco-title">Fast response</div>
+          <div class="deco-sub">Usually within 24 hours</div>
+        </div>
+        <div class="contact-deco-item">
+          <div class="deco-emoji">🌏</div>
+          <div class="deco-title">Remote-friendly</div>
+          <div class="deco-sub">Working with global teams comfortably</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-copy">© 2025 <span>Tanvir Hassan</span> · Designed &amp; Built by Tanvir</div>
+    <div class="footer-right">
+      <a href="https://github.com/TanvirHassan-official" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
+      <a href="https://linkedin.com/in/tanvir-hassan-bd/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
+      <a href="mailto:tanvirhassan0006@gmail.com" class="footer-link">Email</a>
+      <button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑ Top</button>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger menu
+  function openMenu() { document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''; }
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Hero reveals on load
+  window.addEventListener('load', () => {
+    document.querySelectorAll('#hero .reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), 100 + i * 120);
+    });
+  });
+
+  // Keyboard nav for hamburger
+  document.querySelector('.hamburger').addEventListener('keypress', e => {
+    if (e.key === 'Enter' || e.key === ' ') openMenu();
+  });
+</script>
+</body>
+</html>
