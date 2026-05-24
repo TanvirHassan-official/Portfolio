@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/refs */
 'use client';
-
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
+
 
 const stats = [
   { num: '2+', label: 'Years Exp.' },
@@ -29,7 +29,8 @@ export default function Hero() {
       className="min-h-svh flex items-center relative overflow-hidden"
       style={{ padding: 'calc(72px + 60px) 0 80px' }}
     >
-      <div className="max-w-[1120px] mx-auto px-5 md:px-[60px] w-full">
+      {/* Content */}
+      <div className="relative z-10 max-w-[1120px] mx-auto px-5 md:px-[60px] w-full">
         <div className="grid gap-[80px] items-center" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
 
           {/* Left */}
@@ -63,16 +64,16 @@ export default function Hero() {
             </p>
 
             <div ref={addRef(3)} className="reveal reveal-delay-3 flex flex-wrap gap-[14px] mb-12">
-              <a
-                href="#projects"
+
+              <a href="#projects"
                 onClick={(e) => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }); }}
                 className="inline-flex items-center gap-2 px-7 py-[13px] rounded-md font-medium text-[0.78rem] tracking-[0.04em] uppercase transition-all duration-200 hover:opacity-[0.88] hover:-translate-y-[2px]"
                 style={{ fontFamily: 'var(--font-mono)', background: '#99F7AB', color: '#111f26' }}
               >
-                View Projects →
+                {'View Projects →'}
               </a>
-              <a
-                href="/assets/resume.pdf"
+
+              <a href="/assets/resume.pdf"
                 download="Tanvir-Hassan-Resume.pdf"
                 className="inline-flex items-center gap-2 px-7 py-[13px] rounded-md text-[0.78rem] tracking-[0.04em] uppercase transition-all duration-200 hover:-translate-y-[2px]"
                 style={{
@@ -84,9 +85,9 @@ export default function Hero() {
                 onMouseEnter={(e) => e.currentTarget.style.background = 'var(--accent-dim)'}
                 onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
               >
-                ⬇ Download CV
+                {'⬇ Download CV'}
               </a>
-              <a
+              {/* <a
                 href="#contact"
                 onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}
                 className="inline-flex items-center gap-2 px-7 py-[13px] rounded-md text-[0.78rem] tracking-[0.04em] uppercase transition-all duration-200 hover:-translate-y-[2px]"
@@ -100,11 +101,11 @@ export default function Hero() {
                 onMouseEnter={(e) => e.currentTarget.style.background = 'var(--glass-hover)'}
                 onMouseLeave={(e) => e.currentTarget.style.background = 'var(--glass)'}
               >
-                Contact Me
-              </a>
+                {'Contact Me'}
+              </a> */}
             </div>
 
-            {/* Stats */}
+            {/* Stats
             <div
               ref={addRef(4)}
               className="reveal reveal-delay-4 grid grid-cols-2 sm:grid-cols-4 gap-[1px] rounded-md overflow-hidden"
@@ -119,7 +120,7 @@ export default function Hero() {
                   <div className="text-[0.62rem] uppercase tracking-[0.08em]" style={{ fontFamily: 'var(--font-mono)', color: 'rgba(214,249,221,0.32)' }}>{label}</div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Right — Photo */}
@@ -129,18 +130,18 @@ export default function Hero() {
                 src="/assets/hehe.jpeg"
                 alt="Tanvir Hassan — Frontend Developer"
                 fill
-                sizes='w-full'
+                sizes="w-full"
                 className="object-cover object-top"
                 priority
               />
               <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 55%, rgba(17,31,38,0.75))' }} />
-              <div
+              {/* <div
                 className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 px-[18px] py-2 rounded-[4px] text-[0.68rem] tracking-[0.06em] uppercase whitespace-nowrap"
                 style={{ fontFamily: 'var(--font-mono)', color: '#99F7AB', background: 'rgba(25,50,60,0.85)', border: '1px solid var(--glass-border)', backdropFilter: 'blur(12px)' }}
               >
                 <span className="w-[6px] h-[6px] rounded-full bg-[#99F7AB] animate-blink" />
                 Open to work
-              </div>
+              </div> */}
             </div>
           </div>
 

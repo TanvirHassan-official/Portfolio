@@ -2,7 +2,7 @@ export const projects = {
   careloom: {
     slug: 'careloom',
     title: 'Careloom',
-    emoji: '🩺',
+    emoji: '/assets/careloom.jpeg',
     subtitle: 'Doctor Appointment Management System',
     num: '01 / 03',
     desc: 'Careloom is a modern healthcare appointment platform designed to simplify doctor discovery and scheduling. Users browse specialists, view profiles, securely book appointments, and manage everything through a personalised dashboard with a clean, responsive interface.',
@@ -54,7 +54,7 @@ export const projects = {
   skillsphere: {
     slug: 'skillsphere',
     title: 'SkillSphere',
-    emoji: '🎓',
+    emoji: '/assets/skillsphere.jpeg',
     subtitle: 'Online Learning Platform',
     num: '02 / 03',
     desc: 'SkillSphere is a polished online learning platform where users discover and explore skill-based courses across multiple categories. It features smooth animations, full authentication, search and filtering, and a personalised profile system — all built with Next.js and MongoDB.',
@@ -106,7 +106,7 @@ export const projects = {
   keenkeeper: {
     slug: 'keenkeeper',
     title: 'KeenKeeper',
-    emoji: '👥',
+    emoji: '/assets/keenkeeper.jpeg',
     subtitle: 'Friendship Relationship Management App',
     num: '03 / 03',
     desc: 'KeenKeeper is a unique friendship management web application that helps users maintain meaningful relationships. Track interactions, log communication timelines, and visualise friendship analytics with interactive pie charts — ensuring you never lose touch with people who matter most.',

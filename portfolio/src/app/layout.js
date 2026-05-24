@@ -1,5 +1,6 @@
 import { Cormorant_Garamond, Libre_Baskerville, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
+import GalaxyBackground from '@/components/GalaxyBackground';
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -32,7 +33,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${libreBaskerville.variable} ${ibmPlexMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        <GalaxyBackground />
+        <div className="relative z-10 min-h-screen">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
