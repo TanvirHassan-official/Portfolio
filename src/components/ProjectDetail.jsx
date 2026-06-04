@@ -25,8 +25,7 @@ export default function ProjectDetail({ project }) {
               ← Back to Projects
             </Link>
 
-            <div className="flex items-center gap-[18px] mb-[10px]">
-              <div className="text-[2.8rem]">{emoji}</div>
+            <div className="grid items-center gap-[18px] mb-[10px]">
               <div>
                 <div
                   className="inline-flex items-center gap-[10px] mb-[6px] text-[0.68rem] tracking-[0.14em] uppercase"
@@ -41,6 +40,10 @@ export default function ProjectDetail({ project }) {
                   {title}
                 </h1>
               </div>
+
+              <div className="relative w-full mb-10 overflow-hidden rounded-[8px]">
+                    <img src={emoji} alt="project screenshot"/>
+                </div>
             </div>
 
             <p className="text-[1.05rem] leading-[1.8] max-w-[640px] mb-7" style={{ color: 'rgba(214,249,221,0.62)' }}>
