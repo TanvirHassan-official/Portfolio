@@ -73,8 +73,8 @@ export default function Hero() {
                 {'View Projects →'}
               </a>
 
-              <a href="/assets/resume.pdf"
-                download="Tanvir-Hassan-Resume.pdf"
+              <a href="https://drive.google.com/file/d/1JTX9bpSEcP4OG5GF9740TUACzgn9O5Yf/view?usp=sharing"
+                target='_blank'
                 className="inline-flex items-center gap-2 px-7 py-[13px] rounded-md text-[0.78rem] tracking-[0.04em] uppercase transition-all duration-200 hover:-translate-y-[2px]"
                 style={{
                   fontFamily: 'var(--font-mono)',
@@ -85,7 +85,7 @@ export default function Hero() {
                 onMouseEnter={(e) => e.currentTarget.style.background = 'var(--accent-dim)'}
                 onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
               >
-                {'⬇ Download CV'}
+                {'View Resume →'}
               </a>
               {/* <a
                 href="#contact"
