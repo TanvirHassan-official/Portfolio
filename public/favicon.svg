@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Background rounded square -->
+  <rect width="32" height="32" rx="6" fill="#99F7AB"/>
+
+  <!-- T — horizontal bar + stem (dark on green) -->
+  <rect x="4" y="8" width="11" height="3" rx="0.8" fill="#111f26"/>
+  <rect x="8" y="8" width="3" height="14" rx="0.8" fill="#111f26"/>
+
+  <!-- H — left upright, crossbar, right upright -->
+  <rect x="17" y="8" width="3" height="14" rx="0.8" fill="#111f26"/>
+  <rect x="17" y="13.5" width="8" height="3" rx="0.8" fill="#111f26"/>
+  <rect x="22" y="8" width="3" height="14" rx="0.8" fill="#111f26"/>
+
+  <!-- Thin underline accent -->
+  <rect x="4" y="25" width="24" height="1.5" rx="0.75" fill="#111f26" opacity="0.25"/>
+</svg>
